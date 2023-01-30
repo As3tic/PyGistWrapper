@@ -1,13 +1,19 @@
 from typing import Dict, List
 from requests import get, put
 from classes import Gist, GistCommit
-
+from os import getenv
 
 class GistWrapper:
     BASE_URL = "https://api.github.com/gists"
 
-    def __init__(self, token: str):
-        self.gist_token = token
+    def __init__(self, token=None):
+        if token is None:
+            from dotenv import load_dotenv
+
+            load_dotenv()
+            self.gist_token = getenv("GIST_TOKEN")
+        else:
+            self.gist_token = token
         self.generate_headers()
 
 
@@ -69,7 +75,7 @@ class GistWrapper:
 
 
 if __name__ == "__main__":
-    wrapper = GistWrapper(token="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")
+    wrapper = GistWrapper()
 
 
     is_starred = wrapper.check_if_starred(gist_id="4582cb1902a626231c7a2746082f7ee4")
