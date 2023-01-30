@@ -9,27 +9,27 @@
 ### List of features
 
 - [x] View gists
-  - [x] User
-  - [x] Public
-  - [x] Starred
+  - [x] User 🧑
+  - [x] Public 🌍
+  - [x] Starred 🌟
 
-- [x] Get gist commit information
+- [x] Get gist commit information 📜
 
 - [x] Star gists
-  - [x] Star gist
-  - [x] Check if gist is starred
+  - [x] Star/Unstar gist 🌟
+  - [x] Check if gist is starred ❓
 
 ---
 
 ### Development roadmap
 
 - [x] Helper classes
-  - [x] Gist
-  - [x] Gist files
-  - [x] Gist author
-  - [x] Gist commit information
+  - [x] Gist 🧾
+  - [x] Gist files 📚
+  - [x] Gist author 🧑
+  - [x] Gist commit information 📜
 
-- [ ] Unit tests
+- [ ] Unit tests 🧪
 
 ---
 
