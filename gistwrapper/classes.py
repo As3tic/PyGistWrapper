@@ -3,7 +3,7 @@ from dateutil.parser import parse
 from datetime import datetime
 
 
-class GistBase:
+class GistSkeleton:
     
     def __repr__(self):
         pretty_obj: str = ""
@@ -26,7 +26,7 @@ class GistBase:
                     
         return pretty_obj
 
-class Gist(GistBase):
+class GistItem(GistSkeleton):
     def __init__(self, **kwargs):
         self.id = kwargs.get("id")
 
@@ -53,7 +53,7 @@ class Gist(GistBase):
 
     
 
-class GistFile(GistBase):
+class GistFile(GistSkeleton):
     def __init__(self, **kwargs):
         self.filename = kwargs.get("filename")
         self.language = kwargs.get("language")
@@ -61,22 +61,23 @@ class GistFile(GistBase):
         self.size = kwargs.get("size")
 
 
-class GistAuthor(GistBase):
+class GistAuthor(GistSkeleton):
     def __init__(self, **kwargs):
 
         self.username = kwargs.get("login")
-        self.avatar_url = kwargs.get("avatar_url")
+        self.avatar_url = kwargs.get("avatar_url", "")[:-4]
         self.profile_url = kwargs.get("html_url")
         self.followers = kwargs.get("followers_url")
-        self.following = kwargs.get("following_url")
-        self.gists = kwargs.get("gists_url")
-        self.starred = kwargs.get("starred_url")
+        self.following = kwargs.get("following_url", "")[:-13]
+        self.gists = kwargs.get("gists_url", "")[:-10]
+        self.starred = kwargs.get("starred_url", "")[:-15]
         self.repos = kwargs.get("repos_url")
         
 
-class GistCommit(GistBase):
+class GistCommit(GistSkeleton):
     def __init__(self, **kwargs):
-        user = kwargs.get("owner", {})
+        user = kwargs.get("user", {})
+
         self.author = GistAuthor(**user)
 
         changes = kwargs.get("change_status", {})

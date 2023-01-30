@@ -31,6 +31,12 @@
 
 - [ ] Unit tests 🧪
 
+- [x] Split features into its own modules
+  - [x] Star 🌟
+  - [x] Get gists 🔍
+
+
+
 ---
 
 ### Sample project

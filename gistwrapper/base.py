@@ -1,9 +1,12 @@
 from typing import Dict, List
-from requests import get, put
-from classes import Gist, GistCommit
+from requests import delete, get, put
+from classes import GistItem, GistCommit
 from os import getenv
 
-class GistWrapper:
+from star import StarGist
+from get_gist import GetGist
+
+class GistBase:
     BASE_URL = "https://api.github.com/gists"
 
     def __init__(self, token=None):
@@ -14,6 +17,7 @@ class GistWrapper:
             self.gist_token = getenv("GIST_TOKEN")
         else:
             self.gist_token = token
+
         self.generate_headers()
 
 
@@ -26,72 +30,37 @@ class GistWrapper:
 
         self.headers = header
 
-    def get_gists(self, category: str = "") -> List[Gist]:
-        """Returns gists
-        Category: str
-         Can be either 'starred', 'public' or '' (for gists by the user)
-        """
-        header = self.headers
-        header["per_page"] = "10"
+class Gist(GistBase):
 
-        resp = get(f"{self.BASE_URL}/{category}", headers=header)
+    def __init__(self):
+        super().__init__()
+        self.load_modules()
 
-        gists = resp.json()
-
-        gist_iterator = [Gist(**g) for g in gists]
-
-        return gist_iterator
-    
-
-    def get_by_id(self, gist_id: str) -> Gist:
-        resp = get(f"{self.BASE_URL}/{gist_id}", headers=self.headers)
-        data = resp.json()
-
-        return Gist(**data)
-    
-    def get_commits(self, gist_id: str) -> List[GistCommit]:
-        resp = get(f"{self.BASE_URL}/{gist_id}/commits", headers=self.headers)
-        data = resp.json()
-
-        commits = [GistCommit(**data) for data in data]
-
-        return commits
-
-
-    def check_if_starred(self, gist_id: str) -> bool:
-        resp = get(f"{self.BASE_URL}/{gist_id}/star", headers=self.headers)
-        resp_code = resp.status_code
-
-        print(resp_code)
-        return resp_code == 204
-
-
-    def star(self, gist_id: str) -> bool:
-        resp = put(f"{self.BASE_URL}/{gist_id}/star", headers=self.headers)
-        resp_code = resp.status_code
-
-        print(resp_code)
-        return resp_code == 204
+    def load_modules(self) -> None:
+        self.star = StarGist(self.headers)
+        self.get = GetGist(self.headers)
 
 
 if __name__ == "__main__":
-    wrapper = GistWrapper()
+    gist = Gist()
 
+    # TEST STAR
+    # status = gist.star.check_if_starred(gist_id="4582cb1902a626231c7a2746082f7ee4")
+    # print(status)
 
-    is_starred = wrapper.check_if_starred(gist_id="4582cb1902a626231c7a2746082f7ee4")
-    print("IS Starred?", is_starred)
+    # status = gist.star.star(gist_id="4582cb1902a626231c7a2746082f7ee4")
+    # print(status)
 
-    star_gist = wrapper.star(gist_id="4582cb1902a626231c7a2746082f7ee4")
-    print("Starred?", star_gist)
+    # status = gist.star.unstar(gist_id="4582cb1902a626231c7a2746082f7ee4")
+    # print(status)
 
-    is_starred = wrapper.check_if_starred(gist_id="4582cb1902a626231c7a2746082f7ee4")
-    print("IS Starred?", is_starred)
-    
-    # gists = wrapper.get_gists(category="starred")
+    # TEST FETCH GISTS    
+    # gists = gist.get.gists(category="")
     # print(gists[0])
 
-    # gist_by_id = wrapper.get_by_id(gist_id="b9893bd47dd9b00e4fc4aa7bc20fb553")
+    # gist_by_id = gist.get.by_id(gist_id="b9893bd47dd9b00e4fc4aa7bc20fb553")
     # print(gist_by_id)
 
-    # gist_commits = wrapper.get_commits(gist_id="b9893bd47dd9b00e4fc4aa7bc20fb553")
-    # print(gist_commits[0])
+    # TEST GET COMMITS
+    gist_commits = gist.get.commits(gist_id="b9893bd47dd9b00e4fc4aa7bc20fb553")
+    print(gist_commits[0])
