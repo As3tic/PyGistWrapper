@@ -5,7 +5,7 @@ from star import StarGist
 from get_gist import GetGist
 from fork import ForkGist
 from create import CreateGist
-
+from delete import DeleteGist
 
 class GistBase:
     BASE_URL = "https://api.github.com/gists"
@@ -41,10 +41,14 @@ class Gist(GistBase):
         self.get = GetGist(self.headers)
         self.fork = ForkGist(self.headers)
         self.create = CreateGist(self.headers)
-
+        self.delete = DeleteGist(self.headers)
 
 if __name__ == "__main__":
     gist = Gist()
+
+    # TEST DELETE
+    # delete_gist = gist.delete.removeGist(gist_id="21e5d319c5c2b2f2323815aee90c876a")
+    # print(delete_gist)
 
     # TEST CREATE
     # files = {"README.md": {"content": "Hello World"}}
