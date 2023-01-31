@@ -56,4 +56,5 @@
 - [x] Pages:
   - [x] Accept gist token
     - [x] [Template](https://codepen.io/As3tic/pen/oNMPOLm)
-    - [ ] Form
+    - [x] Form
+    - [x] Endpoint
