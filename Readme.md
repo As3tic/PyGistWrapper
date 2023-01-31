@@ -24,6 +24,9 @@
 - [x] Create gist
   - [x] Create a new gist 📝
 
+- [x] Delete gist
+  - [x] Delete a gist 🚮
+
 - [x] Gist commit information 📜
 
 ---
