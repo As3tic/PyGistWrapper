@@ -44,3 +44,8 @@
 ### Sample project
 
 - [ ] A blog powered by gists
+
+- [x] Pages:
+  - [x] Accept gist token
+    - [x] [Template](https://codepen.io/As3tic/pen/oNMPOLm) 
+    - [ ] Form
