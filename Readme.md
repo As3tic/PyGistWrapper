@@ -21,6 +21,9 @@
   - [x] Fork a gist 🍴
   - [x] List forks under a gist 🔎
 
+- [x] Create gist
+  - [x] Create a new gist 📝
+
 - [x] Gist commit information 📜
 
 ---
@@ -38,6 +41,8 @@
 - [x] Group related functions into their own classes
   - [x] Star 🌟
   - [x] Get gists 🔍
+  - [x] Fork gists 🍴
+    - [ ] Check if gist was already forked before
 
 ---
 
@@ -47,5 +52,5 @@
 
 - [x] Pages:
   - [x] Accept gist token
-    - [x] [Template](https://codepen.io/As3tic/pen/oNMPOLm) 
+    - [x] [Template](https://codepen.io/As3tic/pen/oNMPOLm)
     - [ ] Form

@@ -10,19 +10,19 @@ class GistSkeleton:
 
         for key, value in self.__dict__.items():
             if type(value) in [str, int, bool, datetime]:
-                pretty_obj += f"[{key.title()}] {value}\n"
+                pretty_obj += f"\n\t[{key.title()}] {value}\n"
             else:
                 if type(value) == list:
                     for item in value:
-                        pretty_obj += f"[{key.title()}]\n"
+                        pretty_obj += f"\t[{key.title()}]\n"
 
                         for key, value in item.__dict__.items():
-                            pretty_obj += f"\t[{key.title()}] {value}\n"
+                            pretty_obj += f"\t\t[{key.title()}] {value}\n"
                 else:
-                    pretty_obj += f"[{key.title()}]\n"
+                    pretty_obj += f"\t[{key.title()}]\n"
 
                     for key, value in value.__dict__.items():
-                        pretty_obj += f"\t[{key.title()}] {value}\n"
+                        pretty_obj += f"\t\t[{key.title()}] {value}\n"
                     
         return pretty_obj
 
