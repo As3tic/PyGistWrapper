@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <link
+      href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', path='/css/token-accept.css') }}"
+      rel="stylesheet"
+    />
+
+    <script>
+      function sendJSON(token) {
+        console.log(token);
+        var data = {
+          gist_token: token,
+        };
+
+        var json = JSON.stringify(data);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/set-token");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(json);
+      }
+
+      function saveGistToken() {
+        let gistInput = document.getElementsByClassName("form-control")[0];
+        let token = gistInput.value;
+        sendJSON(token);
+      }
+    </script>
+  </head>
+  <!-- Header -->
+  <div class="container">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand fs-3" href="#">GistBlog</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <!-- page content -->
+  <div class="container main-content">
+    <div class="input-group rounded">
+      <span class="input-group-text bg-warning" id="addon-wrapping">🗝</span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter your gist token"
+        aria-label="Gist token"
+        aria-describedby="addon-wrapping"
+      />
+      <button class="btn btn-success" type="button" onclick="saveGistToken()">
+        Submit
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer fixed-bottom mt-auto py-3 bg-dark">
+    <div class="container text-center">
+      <span class="text-light fs-5">As3tic</span>
+    </div>
+  </footer>
+</html>
