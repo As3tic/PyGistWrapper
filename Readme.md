@@ -13,11 +13,15 @@
   - [x] Public 🌍
   - [x] Starred 🌟
 
-- [x] Get gist commit information 📜
-
 - [x] Star gists
   - [x] Star/Unstar gist 🌟
   - [x] Check if gist is starred ❓
+
+- [x] Fork Gist
+  - [x] Fork a gist 🍴
+  - [x] List forks under a gist 🔎
+
+- [x] Gist commit information 📜
 
 ---
 
@@ -31,11 +35,9 @@
 
 - [ ] Unit tests 🧪
 
-- [x] Split features into its own modules
+- [x] Group related functions into their own classes
   - [x] Star 🌟
   - [x] Get gists 🔍
-
-
 
 ---
 
