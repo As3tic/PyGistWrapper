@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <link
+      href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', path='/css/user-page.css') }}"
+      rel="stylesheet"
+    />
+  </head>
+  <!-- Header -->
+  <div class="container-fluid">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand fs-3" href="#">GistBlog</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <!-- page content -->
+  <div class="container main-content">
+    <div class="card" style="width: 18rem">
+      <img
+        src="{{ user.avatar_url }}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body text-center">
+        <h5 class="card-title">{{ user.username }}</h5>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-primary">Starred🌟</button>
+          <button type="button" class="btn btn-primary">Repos 📜</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer fixed-bottom mt-auto py-3 bg-dark">
+    <div class="container-fluid text-center">
+      <span class="text-light fs-5">As3tic</span>
+    </div>
+  </footer>
+</html>
