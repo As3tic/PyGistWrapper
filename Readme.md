@@ -58,3 +58,5 @@
     - [x] [Template](https://codepen.io/As3tic/pen/oNMPOLm)
     - [x] Form
     - [x] Endpoint
+  - [x] Show user info
+    -[x] [Template](https://codepen.io/As3tic/pen/qByLzzr)
