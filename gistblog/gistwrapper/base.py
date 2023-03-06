@@ -27,6 +27,9 @@ class GistBase:
 class Gist(GistBase):
     def __init__(self):
         super().__init__()
+        self.headers = {}
+        self.identity = {}
+        self.gist_token = None
 
     def set_token(self, token:str):
         self.gist_token = token
@@ -71,7 +74,7 @@ if __name__ == "__main__":
     # print(status)
 
     # TEST FETCH GISTS
-    # gists = gist.get.gists(category="")
+    # gists = gist.get.Gist(category="")
     # print(gists[0])
 
     # gist_by_id = gist.get.by_id(gist_id="b9893bd47dd9b00e4fc4aa7bc20fb553")

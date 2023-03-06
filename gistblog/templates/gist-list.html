@@ -5,7 +5,7 @@
       rel="stylesheet"
     />
     <link
-      href="{{ url_for('static', path='/css/user-page.css') }}"
+      href="{{ url_for('static', path='/css/gist-list.css') }}"
       rel="stylesheet"
     />
 
@@ -38,17 +38,29 @@
   </div>
 
   <!-- page content -->
-  <div class="container main-content">
-    <div class="card" style="width: 18rem">
-      <img src="{{ user.avatar_url }}" class="card-img-top" alt="..." />
-      <div class="card-body text-center">
-        <h5 class="card-title">{{ user.username }}</h5>
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-primary">Starred🌟</button>
-          <button type="button" class="btn btn-primary">Repos 📜</button>
+  <div class="container text-center">
+    {% for gist in gist_list %}
+
+    <div class="row">
+      <div class="card bg-dark mb-3 text-light" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <a href="{{ gist.author.profile_url }}">
+            <img src="{{ gist.author.avatar_url }}" class="img-fluid rounded-start" alt="..."></a>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><a href="{{ gist.files[0].url }}">{{ gist.files[0].filename }}</a></h5>
+              <p class="card-text">{{ gist.description }}</p>
+              <p class="card-text"><small class="text-light">Last updated {{ gist.updated_at }}</small></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+   
+    {% endfor %}
+
   </div>
 
   <!-- Footer -->
