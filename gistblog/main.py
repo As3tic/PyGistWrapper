@@ -63,7 +63,18 @@ def me(request: Request):
 
 
 @app.get("/list")
-def gist_list(request: Request):
-    gist_list = client.get.Gist(category="")
+def gist_list(request: Request, category: str = ""):
+    """Get a list of gists
+
+    Args:
+        request (Request): _description_
+        category (str, optional): Category of the Gist. Can be starred, public or gists created by user(''). Defaults to "".
+
+    Returns:
+        _type_: _description_
+    """
+    if category.lower() not in ["starred", "public", ""]: # allowed category list
+        category = ""
+    gist_list = client.get.Gist(category=category)
     
     return templates.TemplateResponse("gist-list.html", {"request": request, "gist_list": gist_list})
