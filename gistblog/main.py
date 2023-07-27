@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 
 from starlette.responses import RedirectResponse
 
-from gistwrapper import Gist
+from gistblog.gistwrapper import Gist
 
 from dotenv import load_dotenv
 load_dotenv()
