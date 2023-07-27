@@ -6,6 +6,9 @@ from gistwrapper.get_gist import GetGist
 from gistwrapper.fork import ForkGist
 from gistwrapper.create import CreateGist
 from gistwrapper.delete import DeleteGist
+from gistwrapper.users import GetUser
+from dateutil.parser import parse
+
 
 class GistBase:
     BASE_URL = "https://api.github.com/gists"
@@ -27,21 +30,23 @@ class GistBase:
 class Gist(GistBase):
     def __init__(self):
         super().__init__()
+
         self.headers = {}
         self.identity = {}
+
         self.gist_token = None
 
-    def set_token(self, token:str):
-        self.gist_token = token
-        self.generate_headers()
-        self.load_modules()
-
-    def load_modules(self) -> None:
         self.star = StarGist(self.headers)
         self.get = GetGist(self.headers)
         self.fork = ForkGist(self.headers)
         self.create = CreateGist(self.headers)
         self.delete = DeleteGist(self.headers)
+        self.user = GetUser(self.headers)
+
+    def set_token(self, token:str):
+        self.gist_token = token
+        self.generate_headers()
+
 
 if __name__ == "__main__":
     gist = Gist()

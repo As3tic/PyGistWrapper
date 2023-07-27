@@ -88,3 +88,22 @@ class GistCommit(GistSkeleton):
         updated_at = changes.get("committed_at", "2000-02-02T13:00:00-02:00")
         self.committed_at: datetime = parse(updated_at)
     
+    
+class User:
+    def __init__(self, **kwargs):
+        self.username = kwargs.get("login", "Unknown")
+        self.avatar_url = kwargs.get("avatar_url", "https://avatars.githubusercontent.com/u/954544?v=4")
+        self.profile_url = kwargs.get("html_url", "https://github.com/octocat")
+        self.name = kwargs.get("name", "Unknown")
+        self.company = kwargs.get("company", "Unknown")
+        self.blog = kwargs.get("blog", "Unknown")
+        self.location = kwargs.get("location", "Unknown")
+        self.twitter_username = kwargs.get("twitter_username", "Unknown")
+        self.public_repos = kwargs.get("public_repos", "Unknown")
+        self.public_gists = kwargs.get("public_gists", "Unknown")
+        self.followers = kwargs.get("followers", "Unknown")
+        self.following = kwargs.get("following", "Unknown")
+        created_at = kwargs.get("created_at", "2000-02-02T13:00:00-02:00")
+        self.created_at = parse(created_at)
+        updated_at = kwargs.get("updated_at", "2000-02-02T13:00:00-02:00")
+        self.updated_at = parse(updated_at)

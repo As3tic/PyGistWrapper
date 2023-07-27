@@ -78,3 +78,9 @@ def gist_list(request: Request, category: str = ""):
     gist_list = client.get.Gist(category=category)
     
     return templates.TemplateResponse("gist-list.html", {"request": request, "gist_list": gist_list})
+
+@app.get("/users")
+def gist_users(request: Request, user: str = ""):
+    if user != "":
+        pass
+    return client.user.GetUsers()

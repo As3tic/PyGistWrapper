@@ -1,5 +1,4 @@
 from requests import delete
-# from gistwrapper.classes import GistItem
 
 class DeleteGist:
     BASE_URL = "https://api.github.com/gists"

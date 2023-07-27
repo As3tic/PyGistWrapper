@@ -1,6 +1,5 @@
 from requests import post
 from json import dumps
-# from gistwrapper.classes import GistItem
 
 class CreateGist:
     BASE_URL = "https://api.github.com/gists"
