@@ -1,1 +1,1 @@
-from gistblog.main import app
+from src.main import app

@@ -1,11 +1,11 @@
 from typing import Dict
 from os import getenv
 
-from gistblog.gistwrapper.star import StarGist
-from gistblog.gistwrapper.get_gist import GetGist
-from gistblog.gistwrapper.fork import ForkGist
-from gistblog.gistwrapper.create import CreateGist
-from gistblog.gistwrapper.delete import DeleteGist
+from gistwrapper.star import StarGist
+from gistwrapper.get_gist import GetGist
+from gistwrapper.fork import ForkGist
+from gistwrapper.create import CreateGist
+from gistwrapper.delete import DeleteGist
 
 class GistBase:
     BASE_URL = "https://api.github.com/gists"

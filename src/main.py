@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 
 from starlette.responses import RedirectResponse
 
-from gistblog.gistwrapper import Gist
+from gistwrapper import Gist
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -40,7 +40,7 @@ def get_token(request: Request):
 
 @app.get("/")
 def request_token(request: Request):
-    url = app.url_path_for("me")
+    url = app.url_path_for("get_token")
     response = RedirectResponse(url=url)
     return response
 
