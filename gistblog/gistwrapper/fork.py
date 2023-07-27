@@ -1,6 +1,6 @@
 
 from requests import delete, get, post
-from gistwrapper.classes import GistItem, GistCommit
+from gistblog.gistwrapper.classes import GistItem, GistCommit
 from typing import List
 
 class ForkGist:

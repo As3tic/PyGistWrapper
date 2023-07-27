@@ -1,4 +1,3 @@
-
 from requests import delete
 # from gistwrapper.classes import GistItem
 

@@ -1,1 +1,1 @@
-from gistwrapper.base import Gist
+from gistblog.gistwrapper.base import Gist

@@ -19,20 +19,20 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-# redirect if token is not set
-@app.middleware("http")
-async def verify_user_agent(request: Request, call_next):
-    if request.method == "GET" and client.gist_token == None:
-        if request.url.path != "/get-token":
-                url = app.url_path_for("get_token")
-                response = RedirectResponse(url=url)
-                return response
-        else:
-            response = await call_next(request)
-            return response
-    else:
-        response = await call_next(request)
-        return response
+# # redirect if token is not set
+# @app.middleware("http")
+# async def verify_user_agent(request: Request, call_next):
+#     if request.method == "GET" and client.gist_token == None:
+#         if request.url.path != "/get-token":
+#                 url = app.url_path_for("get_token")
+#                 response = RedirectResponse(url=url)
+#                 return response
+#         else:
+#             response = await call_next(request)
+#             return response
+#     else:
+#         response = await call_next(request)
+#         return response
 
 @app.get("/get-token")
 def get_token(request: Request):

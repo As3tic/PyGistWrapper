@@ -1,7 +1,7 @@
 
 from requests import delete, get, put
 from typing import List
-from gistwrapper.classes import GistItem, GistCommit
+from gistblog.gistwrapper.classes import GistItem, GistCommit
 
 class GetGist:
     BASE_URL = "https://api.github.com/gists"

@@ -1,4 +1,3 @@
-
 from requests import delete, get, put
 
 class StarGist:

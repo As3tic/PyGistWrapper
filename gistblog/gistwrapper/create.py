@@ -1,4 +1,3 @@
-
 from requests import post
 from json import dumps
 # from gistwrapper.classes import GistItem
